@@ -3,6 +3,7 @@
 
 int main(int argc, char* argv[]) {
 	printf("Hello, world!\n");
+	printf("Goodbye!\n");
 	return EXIT_SUCCESS;
 }
 
