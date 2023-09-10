@@ -1,0 +1,27 @@
+name: Check Environment Variable
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Step 1 - Debug output
+        run: echo "This step always runs"
+
+      - name: Step 2 - GitHub Action if statement (true)
+        env:
+          SECRET_WORD: ${{ secrets.SECRET_WORD }}
+        run: |
+          if [[ "$SECRET_WORD" == "MAYONNAISE" ]]; then
+            echo "I know what the secret token is!"
+          else
+            echo "The secret token is not what I expected."
+            exit 1
+          fi
